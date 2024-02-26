@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "/Components/Navbar";
+import Navbar from "./Components/Navbar";
+import Browse from "./Pages/Browse";
+import Signin from "./Pages/Signin";
+import Signup from "./Pages/Signup";
 
 const routes = [
   { to: "/", label: "" },
   { to: "/Browse", label: "Browse" },
-  { to: "/", label: "`" },
+  { to: "/Signin", label: "Signin" },
 ];
 
 function App() {
@@ -13,10 +16,10 @@ function App() {
     <Router>
       <Navbar routes={routes} />
       <Routes>
-        <Route path="/" element={< />} />
-        <Route path="/" element={< />} />
-        <Route path="/" element={< />} />
-        <Route path="/" element={< />} />
+        <Route path="/#" element={<home/>} />
+        <Route path="/Browse" element={<Browse/>} />
+        <Route path="/Signin" element={<Signin/>} />
+        <Route path="Signup/" element={<Signup/>} />
       </Routes>
     </Router>
   );
