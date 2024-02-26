@@ -4,11 +4,13 @@ import Navbar from "./Components/Navbar";
 import Browse from "./Pages/Browse";
 import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
+import Home from "./Pages/Home";
 
 const routes = [
-  { to: "/", label: "" },
+
   { to: "/Browse", label: "Browse" },
-  { to: "/Signin", label: "Signin" },
+  { to: "/Signin", label: "Sign In" },
+  { to: "/Singup", label: "Sign Up" },
 ];
 
 function App() {
@@ -16,10 +18,10 @@ function App() {
     <Router>
       <Navbar routes={routes} />
       <Routes>
-        <Route path="/#" element={<home/>} />
-        <Route path="/Browse" element={<Browse/>} />
-        <Route path="/Signin" element={<Signin/>} />
-        <Route path="Signup/" element={<Signup/>} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/Browse" element={<Browse />} />
+        <Route path="/Signin" element={<Signin />} />
+        <Route path="Signup/" element={<Signup />} />
       </Routes>
     </Router>
   );

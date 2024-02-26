@@ -13,10 +13,10 @@ const Navbar = ({ routes }) => {
   };
 
   return (
-    <div className="h-20 flex flex-row md:flex-row text-white bg-black justify-between items-center relative">
+    <div className="h-20 flex flex-row md:flex-row text-black justify-between items-center relative">
       <div className="flex items-center">
-        <Link to="/Landing" className="font-bold ml-8 text-xl">
-          Josué Salazaku
+        <Link to="/Home" className="font-bold ml-8 text-4xl">
+          Unread Pile
         </Link>
       </div>
 
@@ -26,17 +26,17 @@ const Navbar = ({ routes }) => {
         onClick={toggleMenu}
       >
         <div
-          className={`h-6 w-0.5 bg-white mb-1 transition-transform transform ${
+          className={`h-6 w-0.5 bg-black mb-1 transition-transform transform ${
             menuOpen ? "rotate-45" : "rotate-0"
           }`}
         ></div>
         <div
-          className={`h-6 w-0.5 bg-white mb-1 transition-opacity ${
+          className={`h-6 w-0.5 bg-black mb-1 transition-opacity ${
             menuOpen ? "opacity-0" : "opacity-100"
           }`}
         ></div>
         <div
-          className={`h-6 w-0.5 bg-white transition-transform transform ${
+          className={`h-6 w-0.5 bg-black transition-transform transform ${
             menuOpen ? "-rotate-45" : "rotate-0"
           }`}
         ></div>
