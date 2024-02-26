@@ -13,12 +13,14 @@ const Navbar = ({ routes }) => {
   };
 
   return (
-    <div className="h-20 flex flex-row md:flex-row text-black justify-between items-center relative">
+    <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative">
       <div className="flex items-center">
         <Link to="/Home" className="font-bold ml-8 text-4xl">
-          Unread Pile
+          <img src="src/assets/books-stack-of-three-svgrepo-com.svg" alt=""  className="h-12 "/>
         </Link>
       </div>
+
+      <input type="text" name="" id="" className="border-2 border-black p-2 text-xl w-80 h-10 rounded-lg" />
 
       {/* Hamburger Icon */}
       <div
@@ -44,7 +46,7 @@ const Navbar = ({ routes }) => {
 
       {/* Mobile Navigation Items */}
       <ul
-        className={`md:hidden mt-12 text-black text-6xl space-y-16 absolute top-20 right-0 left-0 items-center z-50  ${
+        className={`md:hidden mt-12 text-black text-6xl space-y-16 ml-10 absolute top-20 right-0 left-0 items-center z-50  ${
           menuOpen ? "block" : "hidden"
         }`}
       >
@@ -56,9 +58,9 @@ const Navbar = ({ routes }) => {
       </ul>
 
       {/* Desktop Navigation Items */}
-      <ul className="hidden md:flex space-x-6 mx-10 text-xl font-extrabold">
+      <ul className="hidden md:flex space-x-14 mx-8 mr-24 text-xl font-extrabold">
         {routes.map((route) => (
-          <li className="my-3" key={route.to}>
+          <li className="my-5" key={route.to}>
             <Link to={route.to}>{route.label}</Link>
           </li>
         ))}
@@ -67,7 +69,7 @@ const Navbar = ({ routes }) => {
       {/* Navigation Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 transition  bg-white bg-opacity-75 z-40"
+          className="fixed inset-0 transition  bg-white z-40"
           onClick={closeMenu}
         ></div>
       )}
