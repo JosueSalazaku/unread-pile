@@ -1,5 +1,5 @@
 // AppSearchContext.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 const URL = "https://openlibrary.org/search.json?title=";
@@ -44,5 +44,13 @@ const AppSearchProvider = ({ children }) => {
     </AppSearchContext.Provider>
   );
 };
+
+const useAppSearch = () => {
+  const context = useContext(AppSearchContext);
+  if (!context) {
+    throw new Error("useAppSearch must be used within an AppSearchProvider");
+  } 
+  return context;
+}
 
 export { AppSearchContext, AppSearchProvider };

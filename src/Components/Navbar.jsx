@@ -15,10 +15,10 @@ const Navbar = ({ routes }) => {
   };
 
   return (
-    <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative">
+    <div className="h-28 flex flex-row md:flex-row text-black justify-evenly items-center relative">
       <div className="flex items-center">
         <Link to="/Home" className="font-bold ml-8 text-4xl">
-          <img src="src/assets/books-stack-of-three-svgrepo-com.svg" alt="" className="h-12 py-1" />
+          <img src="src/assets/books-stack-of-three-svgrepo-com.svg" alt="" className="h-16 flex flex-row align-middle pr-8" />
         </Link>
       </div>
 
