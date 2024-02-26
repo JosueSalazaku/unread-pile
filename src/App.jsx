@@ -8,8 +8,7 @@ import Mybooks from "./Pages/Mybooks";
 import Home from "./Pages/Home";
 import { AppSearchProvider } from "./AppSearchContext";
 
-const routes = [
-  { to: "/Home", label: "Home" },
+const routes = [ 
   { to: "/Browse", label: "Browse" },
   { to: "/Mybooks", label: "My books" },
   { to: "/Signin", label: "Sign In" },
