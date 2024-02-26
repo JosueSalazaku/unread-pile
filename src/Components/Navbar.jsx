@@ -56,7 +56,7 @@ const Navbar = ({ routes }) => {
       </ul>
 
       {/* Desktop Navigation Items */}
-      <ul className="hidden md:flex space-x-5 mx-8 font-extrabold">
+      <ul className="hidden md:flex space-x-6 mx-10 text-xl font-extrabold">
         {routes.map((route) => (
           <li className="my-3" key={route.to}>
             <Link to={route.to}>{route.label}</Link>
@@ -67,7 +67,7 @@ const Navbar = ({ routes }) => {
       {/* Navigation Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-white bg-opacity-75 z-40"
+          className="fixed inset-0 transition  bg-white bg-opacity-75 z-40"
           onClick={closeMenu}
         ></div>
       )}
