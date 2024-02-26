@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppSearchContext } from "../AppSearchContext";
 
 const Navbar = ({ routes }) => {
+  const { searchInput, setSearchInput } = useContext(AppSearchContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -16,12 +18,13 @@ const Navbar = ({ routes }) => {
     <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative">
       <div className="flex items-center">
         <Link to="/Home" className="font-bold ml-8 text-4xl">
-          <img src="src/assets/books-stack-of-three-svgrepo-com.svg" alt=""  className="h-12 "/>
+          <img src="src/assets/books-stack-of-three-svgrepo-com.svg" alt=""  className="h-12  py-1"/>
         </Link>
       </div>
-
-      <input type="text" name="" id="" className="border-2 border-black p-2 text-xl w-80 h-10 rounded-lg" />
-
+      <div className="flex flex-row">
+      <input type="text" name="" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} id="" className="border-2 border-black p-2 text-xl w-60 h-10 rounded-lg" />
+      <button><img src="src/assets/search-svgrepo-com.svg" alt="" className="h-10 border-r-2 border-black rounded-lg"/></button>
+      </div>
       {/* Hamburger Icon */}
       <div
         className="cursor-pointer md:hidden flex flex-row space-x-2 mr-5"

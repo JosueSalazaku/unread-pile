@@ -7,7 +7,7 @@ const URL = "https://openlibrary.org/search.json?title=";
 const AppSearchContext = React.createContext();
 
 const AppSearchProvider = ({ children }) => {
-  const [searchTerm, setSearchTerm] = useState("The stranger");
+  const [searchInput, setSearchInput] = useState("harry potter"); // Set a default search term
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
@@ -16,10 +16,13 @@ const AppSearchProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(URL + searchTerm);
+
+        // Use searchInput for the API request
+        const response = await axios.get(URL + searchInput);
         const { docs, numFound } = response.data;
+
         setBooks(docs);
-        setResultTitle(`Results for "${searchTerm}" (${numFound} books found)`);
+        setResultTitle(`Results for "${searchInput}" (${numFound} books found)`);
         setLoading(false);
 
         // Log the fetched data to the console
@@ -31,10 +34,12 @@ const AppSearchProvider = ({ children }) => {
     };
 
     fetchData();
-  }, [searchTerm]);
+  }, [searchInput]); // Dependency array changed to watch searchInput
 
   return (
-    <AppSearchContext.Provider value={{ searchTerm, books, loading, resultTitle, setSearchTerm }}>
+    <AppSearchContext.Provider
+      value={{ searchInput, setSearchInput, books, loading, resultTitle }}
+    >
       {children}
     </AppSearchContext.Provider>
   );
