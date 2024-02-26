@@ -1,15 +1,25 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "/Components/Navbar";
 
-
+const routes = [
+  { to: "/", label: "" },
+  { to: "/Browse", label: "Browse" },
+  { to: "/", label: "`" },
+];
 
 function App() {
-
-
   return (
-    <>
-        <h1 className="text-6xl">Hello World</h1>
-    </>
-  )
+    <Router>
+      <Navbar routes={routes} />
+      <Routes>
+        <Route path="/" element={< />} />
+        <Route path="/" element={< />} />
+        <Route path="/" element={< />} />
+        <Route path="/" element={< />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
