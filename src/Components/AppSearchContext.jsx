@@ -1,4 +1,4 @@
-// AppSearchContext.jsx
+
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
@@ -64,4 +64,4 @@ const useAppSearch = () => {
   return context;
 };
 
-export { AppSearchContext, AppSearchProvider };
+export { AppSearchContext, AppSearchProvider,  } ;
