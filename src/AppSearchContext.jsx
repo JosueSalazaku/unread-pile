@@ -23,7 +23,9 @@ const AppSearchProvider = ({ children }) => {
         const { docs, numFound } = response.data;
 
         setBooks(docs);
-        setResultTitle(`Results for "${searchInput}" (${numFound} books found)`);
+        setResultTitle(
+          `Results for "${searchInput}" (${numFound} books found)`
+        );
         setSearchResults(docs);
         setLoading(false);
 
@@ -40,7 +42,14 @@ const AppSearchProvider = ({ children }) => {
 
   return (
     <AppSearchContext.Provider
-      value={{ searchInput, setSearchInput, books, loading, resultTitle, searchResults }}
+      value={{
+        searchInput,
+        setSearchInput,
+        books,
+        loading,
+        resultTitle,
+        searchResults,
+      }}
     >
       {children}
     </AppSearchContext.Provider>
@@ -51,8 +60,8 @@ const useAppSearch = () => {
   const context = useContext(AppSearchContext);
   if (!context) {
     throw new Error("useAppSearch must be used within an AppSearchProvider");
-  } 
+  }
   return context;
-}
+};
 
 export { AppSearchContext, AppSearchProvider };
