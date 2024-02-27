@@ -11,6 +11,7 @@ const AppSearchProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +24,7 @@ const AppSearchProvider = ({ children }) => {
 
         setBooks(docs);
         setResultTitle(`Results for "${searchInput}" (${numFound} books found)`);
+        setSearchResults(docs);
         setLoading(false);
 
         // Log the fetched data to the console
@@ -38,7 +40,7 @@ const AppSearchProvider = ({ children }) => {
 
   return (
     <AppSearchContext.Provider
-      value={{ searchInput, setSearchInput, books, loading, resultTitle }}
+      value={{ searchInput, setSearchInput, books, loading, resultTitle, searchResults }}
     >
       {children}
     </AppSearchContext.Provider>

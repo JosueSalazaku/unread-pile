@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AppSearchContext } from "../AppSearchContext";
 
 const Navbar = ({ routes }) => {
-  const { searchInput, setSearchInput } = useContext(AppSearchContext);
+  const { searchInput, setSearchInput, searchResults } = useContext(AppSearchContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,6 +13,13 @@ const Navbar = ({ routes }) => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  const handleSearch = () => {
+    // can add additional actions related to search if needed
+    console.log('Search triggerd:', searchInput);
+     // Note: searchResults will be updated automatically due to context
+    setMenuOpen(false);
+  }
 
   return (
     <div className="h-28 flex flex-row md:flex-row text-black justify-evenly items-center relative">
@@ -37,7 +44,7 @@ const Navbar = ({ routes }) => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <button type="submit" className="text-white absolute end-2.5 bottom-0.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 ml-10 py-2">
+        <button onClick={handleSearch} className="text-white absolute end-2.5 bottom-0.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 ml-10 py-2">
           <img src="src/assets/search-svgrepo-com.svg" alt="" className="h-5" />
         </button>
       </div>
