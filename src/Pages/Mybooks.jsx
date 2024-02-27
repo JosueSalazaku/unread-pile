@@ -1,5 +1,9 @@
+import SearchBar from "../Components/SearchBar";
+
 const Mybooks = () => {
-  return <div>My books and reading stats</div>;
+  return <main>
+    <SearchBar/>
+    My books and reading stats</main>;
 };
 
 export default Mybooks;

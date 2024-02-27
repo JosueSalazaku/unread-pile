@@ -1,8 +1,9 @@
-
+import SearchBar from "../Components/SearchBar"
 
 const Home = () => {
   return (
-      <main>
+    <main>
+      <SearchBar/>
           <h1 className="text-6xl">Find your Books</h1>
     </main>
   )

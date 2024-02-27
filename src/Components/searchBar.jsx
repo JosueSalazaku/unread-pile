@@ -6,10 +6,7 @@ const SearchBar = () => {
 
   return (
     <div className="relative">
-      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-        <svg className="w-4 h-4 text-black dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-        </svg>
-      </div>
+      <div className="w-50 inset-y-0 start-0 flex items-center px-20 pointer-events-none">
       <input
         type="search"
         id="search"
@@ -19,9 +16,10 @@ const SearchBar = () => {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-      <button onClick={handleSearch} className="text-white absolute end-2.5 bottom-0.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 ml-10 py-2">
-        <img src="src/assets/search-svgrepo-com.svg" alt="" className="h-5" />
-      </button>
+            <button onClick={handleSearch} className="text-white absolute end-2.5 bottom-0.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 ml-20 py-2">
+                <img src="src/assets/search-svgrepo-com.svg" alt="" className="h-5" />
+            </button>
+        </div>
     </div>
   );
 }
