@@ -2,9 +2,8 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppSearchContext } from "./AppSearchContext";
 
-const Navbar = ({ routes }) => {
-  const { searchInput, setSearchInput, searchResults } =
-    useContext(AppSearchContext);
+const Navbar = ({ routes, darkMode, toggleDarkMode }) => {
+  const { searchInput, setSearchInput, searchResults } = useContext(AppSearchContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -15,15 +14,10 @@ const Navbar = ({ routes }) => {
     setMenuOpen(false);
   };
 
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  }
-
-
   return (
-    <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative dark:bg-neutral-900">
+    <div className={`${darkMode && "dark"}`}>
+    <div className={`h-28 flex flex-row md:flex-row text-black justify-between items-center relative dark:bg-neutral-900`}>
+
       <div className="flex items-center">
         <Link
           to="/Home"
@@ -56,7 +50,12 @@ const Navbar = ({ routes }) => {
       </div>
 
       {/* Dark Mode Toggle Button on small screens */}
-      <button className="absolute w-10 h-10 rounded-full  bg-black dark:bg-white text-white top-0 right-0 mt-9 mr-10 md:hidden">DRK</button>
+      <button
+        className="absolute w-10 h-10 rounded-full  bg-black dark:bg-white text-white top-0 right-0 mt-9 mr-10 md:hidden"
+        onClick={toggleDarkMode}
+      >
+        {darkMode ? "LHT" : "DRK"}
+      </button>
 
       {/* Mobile Navigation Items */}
       <ul
@@ -72,7 +71,12 @@ const Navbar = ({ routes }) => {
       </ul>
 
       {/* Dark Mode Toggle Button on large screens */}
-      <button className="absolute w-10 h-10 rounded-full bg-black dark:bg-white text-white top-0 right-0 mt-9 mr-10 hidden md:block">DRK</button>
+      <button
+        className="absolute w-10 h-10 rounded-full bg-black dark:bg-white text-white top-0 right-0 mt-9 mr-10 hidden md:block"
+        onClick={toggleDarkMode}
+      >
+        {darkMode ? "LHT" : "DRK"}
+      </button>
 
       {/* Desktop Navigation Items for screens above 1130px */}
       <ul className="hidden md:flex space-x-14 mx-10 mr-32 text-md font-semibold lg:flex dark:text-white">
@@ -89,7 +93,8 @@ const Navbar = ({ routes }) => {
           onClick={closeMenu}
         ></div>
       )}
-    </div>
+      </div>
+      </div>
   );
 };
 

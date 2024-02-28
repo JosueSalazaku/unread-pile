@@ -1,11 +1,18 @@
-import SearchBar from "../Components/SearchBar"
+import SearchBar from "../Components/SearchBar";
 
-const Home = () => {
+const Home = ({ darkMode }) => {
   return (
-    <main className="h-screen flex flex-col items-center dark:bg-neutral-900">
-      <SearchBar/>
-          <h1 className="text-6xl dark:text-white">Find your Books</h1>
-    </main>
-  )
-}
-export default Home
+    <div className={`${darkMode && "dark"}`}>
+    <main
+      className={`h-screen flex flex-col items-center ${
+        darkMode ? "dark" : ""
+      } dark:bg-neutral-900 text-white`}
+    >
+      <SearchBar />
+      <h1 className="text-6xl dark:text-white">Find your Books</h1>
+      </main>
+      </div>
+  );
+};
+
+export default Home;

@@ -1,5 +1,6 @@
-const Signup = () => {
-    return (
+const Signup = ({darkMode}) => {
+  return (
+    <div className={`${darkMode && "dark"}`}> 
       <main className="h-screen w-screen text-black flex flex-col pt-20 items-center dark:bg-neutral-900 text-white ">
             <h1>Unread Pile</h1>
             <form action="" className="w-96 h-96 border-4 flex flex-col justify-evenly items-center rounded-2xl">
@@ -9,6 +10,7 @@ const Signup = () => {
                 <button className="bg-blue-500">Sign up</button>
             </form>
       </main>
+      </div>
     );
   };
   
