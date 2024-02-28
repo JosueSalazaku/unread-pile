@@ -16,7 +16,7 @@ const SearchBar = () => {
       <input
         type="search"
         id="search"
-        className="w-80 rounded-l-2xl h-10 p-2 text-sm text-black border-t-2 border-b-2 border-l-2 border-r-0 border-black dark:bg-neutral-700 border-2 dark:border-gray-500 dark:text-white"
+        className="w-80 rounded-l-2xl h-10 p-2 text-sm bg-white text-black border-t-2 border-b-2 border-l-2 border-r-0 border-black dark:bg-neutral-700 border-2 dark:border-gray-500 dark:text-white"
         placeholder="Search"
         required
         value={searchInput}

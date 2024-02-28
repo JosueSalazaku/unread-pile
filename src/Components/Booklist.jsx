@@ -37,10 +37,12 @@ const Booklist = () => {
                 {book.title}
               </h3>
               <p>
-                Author:{" "}
+                {" "}
                 {book.author_name ? book.author_name.join(".") : "Unknown"}
               </p>
-              <select name="" id="">
+              <p>Pages: {book.number_of_pages ? book.number_of_pages : "Unknown"}</p>
+              <select className="rounded-md p-0.5 mt-20 bg-gray-500 text-white dark:bg-gray-500 dark:text-white"
+              >
                 <option value="">To Read</option>
                 <option value="">Read</option>
                 <option value="">Currently Reading</option>
