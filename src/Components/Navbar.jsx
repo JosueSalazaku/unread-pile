@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppSearchContext } from "./AppSearchContext";
 
@@ -17,15 +17,18 @@ const Navbar = ({ routes }) => {
 
   return (
     <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative dark:bg-neutral-900">
-    <div className="flex items-center">
-        <Link to="/Home" className={'ml-8 text-2xl text-center font-extrabold dark:text-white'}>
+      <div className="flex items-center">
+        <Link
+          to="/Home"
+          className={"ml-8 text-2xl text-center font-extrabold dark:text-white"}
+        >
           Unread <br /> Pile
-      </Link>
-    </div>
+        </Link>
+      </div>
 
       {/* Hamburger Icon for screens below 1130px */}
       <div
-        className="cursor-pointer md:hidden flex flex-row space-x-2 mr-12"
+        className="cursor-pointer md:hidden flex flex-row space-x-2 mr-32"
         onClick={toggleMenu}
       >
         <div
@@ -45,6 +48,9 @@ const Navbar = ({ routes }) => {
         ></div>
       </div>
 
+      {/* Dark Mode Toggle Button on small screens */}
+      <button className="absolute w-10 h-10 rounded-full bg-black dark:bg-white top-0 right-0 mt-9 mr-10 md:hidden"></button>
+
       {/* Mobile Navigation Items */}
       <ul
         className={`md:hidden mt-12 text-black text-6xl space-y-16 ml-10 absolute top-20 right-0 left-0 items-center z-50 dark:text-white ${
@@ -58,8 +64,11 @@ const Navbar = ({ routes }) => {
         ))}
       </ul>
 
+      {/* Dark Mode Toggle Button on large screens */}
+      <button className="absolute w-10 h-10 rounded-full bg-black dark:bg-white top-0 right-0 mt-9 mr-10 hidden md:block"></button>
+
       {/* Desktop Navigation Items for screens above 1130px */}
-      <ul className="hidden md:flex space-x-14 mx-8 text-md font-semibold lg:flex dark:text-white">
+      <ul className="hidden md:flex space-x-14 mx-10 mr-32 text-md font-semibold lg:flex dark:text-white">
         {routes.map((route) => (
           <li className="my-5" key={route.to}>
             <Link to={route.to}>{route.label}</Link>
