@@ -12,32 +12,33 @@ const AppSearchProvider = ({ children }) => {
   const [resultTitle, setResultTitle] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  const handleSearch = async () => {
+    try {
+      setLoading(true);
+
+      // Use searchInput for the API request
+      const response = await axios.get(URL + searchInput);
+      const { docs, numFound } = response.data;
+
+      setBooks(docs);
+      setResultTitle(
+        `Results for "${searchInput}" (${numFound} books found)`
+      );
+      setSearchResults(docs);
+      setLoading(false);
+
+      // Log the fetched data to the console
+      console.log("Fetched Data:", docs);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-
-        // Use searchInput for the API request
-        const response = await axios.get(URL + searchInput);
-        const { docs, numFound } = response.data;
-
-        setBooks(docs);
-        setResultTitle(
-          `Results for "${searchInput}" (${numFound} books found)`
-        );
-        setSearchResults(docs);
-        setLoading(false);
-
-        // Log the fetched data to the console
-        console.log("Fetched Data:", docs);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [searchInput]); // Dependency array changed to watch searchInput
+    // Fetch data when the component mounts
+    handleSearch();
+  }, []); // Empty dependency array to trigger only on mount
 
   return (
     <AppSearchContext.Provider
@@ -48,6 +49,7 @@ const AppSearchProvider = ({ children }) => {
         loading,
         resultTitle,
         searchResults,
+        handleSearch,
       }}
     >
       {children}
@@ -63,4 +65,4 @@ const useAppSearch = () => {
   return context;
 };
 
-export { AppSearchContext, AppSearchProvider,  } ;
+export { AppSearchContext, AppSearchProvider, useAppSearch };

@@ -16,13 +16,6 @@ const Navbar = ({ routes }) => {
     setMenuOpen(false);
   };
 
-  const handleSearch = () => {
-    // can add additional actions related to search if needed
-    console.log("Search triggerd:", searchInput);
-    // Note: searchResults will be updated automatically due to context
-    setMenuOpen(false);
-  };
-
   return (
     <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative">
       <div className="flex items-center">
