@@ -21,7 +21,7 @@ const Navbar = ({ routes, darkMode, toggleDarkMode }) => {
       <div className="flex items-center">
         <Link
           to="/Home"
-          className={"ml-8 text-2xl text-center font-extrabold dark:text-white"}
+          className={"ml-8 text-2xl text-center font-Poppins font-extrabold dark:text-white"}
         >
           Unread <br /> Pile
         </Link>

@@ -7,7 +7,7 @@ const AppSearchContext = React.createContext();
 
 // eslint-disable-next-line react/prop-types
 const AppSearchProvider = ({ children }) => {
-  const [searchInput, setSearchInput] = useState("harry potter"); // Set a default search term
+  const [searchInput, setSearchInput] = useState(""); // Set a default search term
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
