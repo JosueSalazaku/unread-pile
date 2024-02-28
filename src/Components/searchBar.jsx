@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { AppSearchContext } from './AppSearchContext';
+import { useContext } from "react";
+import { AppSearchContext } from "./AppSearchContext";
 
 const SearchBar = () => {
-  const { searchInput, setSearchInput, handleSearch } = useContext(AppSearchContext);
+  const { searchInput, setSearchInput, handleSearch } =
+    useContext(AppSearchContext);
 
   return (
     <div className="relative flex h-32 items-center">
@@ -23,6 +24,6 @@ const SearchBar = () => {
       </button>
     </div>
   );
-}
+};
 
 export default SearchBar;

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import SearchBar from '../Components/SearchBar'
 const Browse = () => {
   return (

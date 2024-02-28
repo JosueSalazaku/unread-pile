@@ -81,7 +81,7 @@ const Navbar = ({ routes }) => {
 
       {menuOpen && (
         <div
-          className="fixed inset-0 transition bg-white z-40"
+          className="fixed inset-0 transition opacity-75 bg-white z-40"
           onClick={closeMenu}
         ></div>
       )}
