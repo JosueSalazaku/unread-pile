@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Browse from "./Pages/Browse";
@@ -15,7 +15,7 @@ const App = () => {
     setDarkMode(!darkMode);
   };
 
-  const routes = [ 
+  const routes = [
     { to: "/Browse", label: "Browse" },
     { to: "/Mybooks", label: "My books" },
     { to: "/Signin", label: "Sign In" },
@@ -25,9 +25,13 @@ const App = () => {
   return (
     <AppSearchProvider>
       <Router>
-        <Navbar routes={routes} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Navbar
+          routes={routes}
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
         <Routes>
-        <Route path="/Home" element={<Home darkMode={darkMode} />} />
+          <Route path="/Home" element={<Home darkMode={darkMode} />} />
           <Route path="/Browse" element={<Browse darkMode={darkMode} />} />
           <Route path="/Mybooks" element={<Mybooks darkMode={darkMode} />} />
           <Route path="/Signin" element={<Signin darkMode={darkMode} />} />

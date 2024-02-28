@@ -6,7 +6,7 @@ import SearchBar from '../Components/SearchBar'
 const Browse = ({ darkMode }) => {
   return (
     <div className={`${darkMode && "dark"}`}>
-    <main className="h-screen flex flex-col items-center dark:bg-neutral-900 text-white">
+   <main className="h-full flex flex-col items-center  dark:text-white dark:bg-neutral-900">
       <SearchBar />
       <section>
       <Booklist/>

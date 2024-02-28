@@ -51,7 +51,7 @@ const Navbar = ({ routes, darkMode, toggleDarkMode }) => {
 
       {/* Dark Mode Toggle Button on small screens */}
       <button
-        className="absolute w-10 h-10 rounded-full  bg-black dark:bg-white text-white top-0 right-0 mt-9 mr-10 md:hidden"
+        className="absolute w-10 h-10 rounded-full bg-black dark:bg-white text-black top-0 right-0 mt-9 mr-10 md:hidden"
         onClick={toggleDarkMode}
       >
         {darkMode ? "LHT" : "DRK"}
@@ -72,7 +72,7 @@ const Navbar = ({ routes, darkMode, toggleDarkMode }) => {
 
       {/* Dark Mode Toggle Button on large screens */}
       <button
-        className="absolute w-10 h-10 rounded-full bg-black dark:bg-white text-white top-0 right-0 mt-9 mr-10 hidden md:block"
+        className="absolute w-10 h-10 rounded-full text-white bg-black dark:bg-white dark:text-black top-0 right-0 mt-9 mr-10 hidden md:block"
         onClick={toggleDarkMode}
       >
         {darkMode ? "LHT" : "DRK"}
