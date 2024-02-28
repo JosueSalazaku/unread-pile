@@ -18,7 +18,7 @@ const Booklist = () => {
                 {books.map((book) => {
                     return (
                         <li key={book.key}>
-                            <h3>Title: {book.title}</h3>
+                            <h3 className="font-bold text-xl">Title: {book.title}</h3>
                             <p>Author: {book.author_name ? book.author_name.join(".") : "Unknown"}</p>
                             {book.cover_i && <img src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`} alt={`Cover of ${book.title}`} />}
                         </li>

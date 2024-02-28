@@ -21,7 +21,7 @@ const SearchBar = () => {
           required
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
-          onKeyPress={handleSearch}
+          onKeyPress={handleKeypress}
         />
         <button
           onClick={handleSearch}

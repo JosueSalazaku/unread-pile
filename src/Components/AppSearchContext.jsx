@@ -5,6 +5,7 @@ const URL = "https://openlibrary.org/search.json?title=";
 
 const AppSearchContext = React.createContext();
 
+// eslint-disable-next-line react/prop-types
 const AppSearchProvider = ({ children }) => {
   const [searchInput, setSearchInput] = useState("harry potter"); // Set a default search term
   const [books, setBooks] = useState([]);
