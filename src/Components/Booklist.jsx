@@ -17,10 +17,12 @@ const Booklist = () => {
             <ul className="flex flex-col">
                 {books.map((book) => {
                     return (
-                        <li className="border m-4 dark:text-white" key={book.key}>
+                        <li className="flex flex-row justify-evenly border m-4 rounded-md px-10 py-8 dark:text-white" key={book.key}>
                              {book.cover_i && <img src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`} alt={`Cover of ${book.title}`} className="py-5" />}
-                            <h3 className="font-bold py- text-xl dark:text-white">Title: {book.title}</h3>
-                            <p>Author: {book.author_name ? book.author_name.join(".") : "Unknown"}</p>
+                            <div className="px-10 py-5">
+                                <h3 className="font-bold py- text-xl dark:text-white"> {book.title}</h3>
+                                <p>Author: {book.author_name ? book.author_name.join(".") : "Unknown"}</p>
+                            </div>
                         </li>
                     );
                 })}
