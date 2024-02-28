@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppSearchContext } from "./AppSearchContext";
-import SearchBar from "./SearchBar";
 
 const Navbar = ({ routes }) => {
   const { searchInput, setSearchInput, searchResults } =

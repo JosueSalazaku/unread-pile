@@ -5,7 +5,9 @@ const Browse = () => {
   return (
     <main className='flex flex-col items-center'>
       <SearchBar />
+      <section>
       <Booklist/>
+     </section>
     </main>
   )
 }
