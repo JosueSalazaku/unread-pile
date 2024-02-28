@@ -16,7 +16,11 @@ const Navbar = ({ routes }) => {
   };
 
   const [darkMode, setDarkMode] = useState(false);
-  
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  }
+
 
   return (
     <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative dark:bg-neutral-900">
