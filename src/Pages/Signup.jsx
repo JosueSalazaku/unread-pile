@@ -1,6 +1,6 @@
 const Signup = () => {
     return (
-      <main className="h-screen w-screen text-black flex flex-col mt-20 items-center ">
+      <main className="h-screen w-screen text-black flex flex-col pt-20 items-center dark:bg-neutral-900 text-white ">
             <h1>Unread Pile</h1>
             <form action="" className="w-96 h-96 border-4 flex flex-col justify-evenly items-center rounded-2xl">
                 <input type="" name="" id="" className="border" />

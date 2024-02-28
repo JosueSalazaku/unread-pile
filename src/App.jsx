@@ -30,5 +30,4 @@ function App() {
     </AppSearchProvider>
   );
 }
-
 export default App;

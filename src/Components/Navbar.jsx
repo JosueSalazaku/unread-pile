@@ -16,34 +16,30 @@ const Navbar = ({ routes }) => {
   };
 
   return (
-    <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative">
-      <div className="flex items-center">
-        <Link to="/Home" className="font-bold ml-8 text-4xl">
-          <img
-            src="src/assets/books-stack-of-three-svgrepo-com.svg"
-            alt=""
-            className="h-16 flex flex-row align-middle pr-8"
-          />
-        </Link>
-      </div>
+    <div className="h-28 flex flex-row md:flex-row text-black justify-between items-center relative dark:bg-neutral-900">
+    <div className="flex items-center">
+        <Link to="/Home" className={'ml-8 text-2xl text-center font-extrabold dark:text-white'}>
+          Unread <br /> Pile
+      </Link>
+    </div>
 
       {/* Hamburger Icon for screens below 1130px */}
       <div
-        className="cursor-pointer md:hidden flex flex-row space-x-2 mr-5"
+        className="cursor-pointer md:hidden flex flex-row space-x-2 mr-12"
         onClick={toggleMenu}
       >
         <div
-          className={`h-6 w-0.5 bg-black mb-1 transition-transform transform ${
+          className={`h-6 w-0.5 bg-black mb-1 transition-transform transform dark:bg-white ${
             menuOpen ? "rotate-45" : "rotate-0"
           }`}
         ></div>
         <div
-          className={`h-6 w-0.5 bg-black mb-1 transition-opacity ${
+          className={`h-6 w-0.5 bg-black mb-1 transition-opacity dark:bg-white ${
             menuOpen ? "opacity-0" : "opacity-100"
           }`}
         ></div>
         <div
-          className={`h-6 w-0.5 bg-black transition-transform transform ${
+          className={`h-6 w-0.5 bg-black transition-transform transform dark:bg-white ${
             menuOpen ? "-rotate-45" : "rotate-0"
           }`}
         ></div>
@@ -51,7 +47,7 @@ const Navbar = ({ routes }) => {
 
       {/* Mobile Navigation Items */}
       <ul
-        className={`md:hidden mt-12 text-black text-6xl space-y-16 ml-10 absolute top-20 right-0 left-0 items-center z-50 ${
+        className={`md:hidden mt-12 text-black text-6xl space-y-16 ml-10 absolute top-20 right-0 left-0 items-center z-50 dark:text-white ${
           menuOpen ? "block" : "hidden"
         }`}
       >
@@ -63,7 +59,7 @@ const Navbar = ({ routes }) => {
       </ul>
 
       {/* Desktop Navigation Items for screens above 1130px */}
-      <ul className="hidden md:flex space-x-14 mx-8  text-md font-semibold lg:flex">
+      <ul className="hidden md:flex space-x-14 mx-8 text-md font-semibold lg:flex dark:text-white">
         {routes.map((route) => (
           <li className="my-5" key={route.to}>
             <Link to={route.to}>{route.label}</Link>
@@ -73,7 +69,7 @@ const Navbar = ({ routes }) => {
 
       {menuOpen && (
         <div
-          className="fixed inset-0 transition opacity-75 bg-white z-40"
+          className="fixed inset-0 transition opacity-75 bg-white z-40 dark:bg-neutral-900"
           onClick={closeMenu}
         ></div>
       )}

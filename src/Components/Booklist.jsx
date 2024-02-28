@@ -12,15 +12,15 @@ const Booklist = () => {
     }
 
     return (
-        <div>
-            <h2>{resultTitle}</h2>
+        <div >
+            <h2 className="py-10">{resultTitle}</h2>
             <ul>
                 {books.map((book) => {
                     return (
                         <li key={book.key}>
-                            <h3 className="font-bold text-xl">Title: {book.title}</h3>
+                             {book.cover_i && <img src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`} alt={`Cover of ${book.title}`} className="py-5" />}
+                            <h3 className="font-bold py- text-xl">Title: {book.title}</h3>
                             <p>Author: {book.author_name ? book.author_name.join(".") : "Unknown"}</p>
-                            {book.cover_i && <img src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`} alt={`Cover of ${book.title}`} />}
                         </li>
                     );
                 })}

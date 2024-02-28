@@ -16,7 +16,7 @@ const SearchBar = () => {
         <input
           type="search"
           id="search"
-          className="w-80 rounded-l-xl h-10 p-2 text-sm text-black border-l-2 border-t-2 border-b-2 border-black"
+          className="w-80 rounded-l-2xl h-10 p-2 text-sm text-black border-l-2 border-t-2 border-b-2 border-black"
           placeholder="Search"
           required
           value={searchInput}
@@ -25,7 +25,7 @@ const SearchBar = () => {
         />
         <button
           onClick={handleSearch}
-          className="border-r-2 border-t-2 border-b-2 border-black rounded-r-xl p-2"
+          className="border-r-2 border-t-2 border-b-2 border-black rounded-r-2xl p-2 dark:bg-white"
         >
           <img src="src/assets/search-svgrepo-com.svg" alt="" className="h-5" />
         </button>
