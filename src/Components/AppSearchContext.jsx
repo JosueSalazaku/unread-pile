@@ -3,6 +3,7 @@ import axios from "axios";
 
 const URL = "https://www.googleapis.com/books/v1/volumes";
 const API_KEY = import.meta.env.REACT_APP_API_KEY;
+const MAX_RESULTS = 40;
 
 const AppSearchContext = React.createContext();
 
@@ -12,6 +13,7 @@ const AppSearchProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [startIndex, setStartIndex] = useState(0);
 
   const handleSearch = async () => {
     try {
@@ -21,7 +23,8 @@ const AppSearchProvider = ({ children }) => {
         params: {
           key: API_KEY,
           q: searchInput,
-          maxResults: 40,
+          startIndex: startIndex,
+          maxResults: MAX_RESULTS,
         },
       });
 
@@ -42,9 +45,14 @@ const AppSearchProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // Fetch data when the component mounts
+    // Fetch data when the component mounts and when the searchInput changes
     handleSearch();
-  }, []); // Empty dependency array to trigger only on mount
+  }, [searchInput]); // Trigger when searchInput changes
+
+  // Function to load more books
+  const loadMoreBooks = () => {
+    setStartIndex((prevIndex) => prevIndex + MAX_RESULTS);
+  };
 
   return (
     <AppSearchContext.Provider
@@ -56,6 +64,7 @@ const AppSearchProvider = ({ children }) => {
         resultTitle,
         searchResults,
         handleSearch,
+        loadMoreBooks,
       }}
     >
       {children}
