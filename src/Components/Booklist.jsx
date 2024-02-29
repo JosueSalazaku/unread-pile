@@ -34,7 +34,7 @@ const Booklist = () => {
                 className="w-32 h-48 mx-5 md:w-48 md:h-64 lg:w-48 lg:h-72 py-5"
               />
             )}
-            <div className="px-4 md:px-10 py-5">
+            <div className="mx-4 md:px-10 py-5">
               <h3 className="font-bold text-md md:text-lg lg:text-xl dark:text-white">
                 {book.volumeInfo.title}
               </h3>

@@ -21,6 +21,7 @@ const AppSearchProvider = ({ children }) => {
         params: {
           key: API_KEY,
           q: searchInput,
+          maxResults: 40,
         },
       });
 
