@@ -1,9 +1,10 @@
+// AppSearchContext.jsx
+
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 const URL = "https://www.googleapis.com/books/v1/volumes";
 const API_KEY = import.meta.env.REACT_APP_API_KEY;
-const MAX_RESULTS = 40;
 
 const AppSearchContext = React.createContext();
 
@@ -13,7 +14,7 @@ const AppSearchProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [startIndex, setStartIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0); // Added startIndex state
 
   const handleSearch = async () => {
     try {
@@ -23,36 +24,34 @@ const AppSearchProvider = ({ children }) => {
         params: {
           key: API_KEY,
           q: searchInput,
-          startIndex: startIndex,
-          maxResults: MAX_RESULTS,
+          maxResults: 40,
+          startIndex, // Added startIndex to the params
         },
       });
 
       const { items, totalItems } = response.data;
 
-      setBooks(items);
+      // If startIndex is 0, set books directly; otherwise, concatenate
+      setBooks((prevBooks) => (startIndex === 0 ? items : [...prevBooks, ...items]));
       setResultTitle(
         `Results for "${searchInput}" (${totalItems} books found)`
       );
       setSearchResults(items);
       setLoading(false);
-
-      console.log("Fetched Data:", items);
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    // Fetch data when the component mounts and when the searchInput changes
-    handleSearch();
-  }, [searchInput]); // Trigger when searchInput changes
-
-  // Function to load more books
   const loadMoreBooks = () => {
-    setStartIndex((prevIndex) => prevIndex + MAX_RESULTS);
+    setStartIndex((prevIndex) => prevIndex + 40); // Increment startIndex by 40
   };
+
+  useEffect(() => {
+    // Fetch data when the component mounts
+    handleSearch();
+  }, [startIndex]); // Watch for changes in startIndex
 
   return (
     <AppSearchContext.Provider
@@ -64,7 +63,7 @@ const AppSearchProvider = ({ children }) => {
         resultTitle,
         searchResults,
         handleSearch,
-        loadMoreBooks,
+        loadMoreBooks, // Include the loadMoreBooks function in the context
       }}
     >
       {children}

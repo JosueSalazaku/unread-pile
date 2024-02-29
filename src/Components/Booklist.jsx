@@ -1,8 +1,10 @@
+// Booklist.jsx
+
 import React from 'react';
 import { useAppSearch } from './AppSearchContext';
 
 const Booklist = () => {
-  const { books, loading, resultTitle, searchInput } = useAppSearch();
+  const { books, loading, resultTitle, searchInput, loadMoreBooks } = useAppSearch();
 
   if (loading) {
     return <p>Loading...</p>;
@@ -64,6 +66,9 @@ const Booklist = () => {
           </li>
         ))}
       </ul>
+      <button onClick={loadMoreBooks} className="bg-blue-500 text-white p-2 rounded-md mt-4">
+        Load More
+      </button>
     </div>
   );
 };
