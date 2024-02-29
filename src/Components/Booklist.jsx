@@ -66,7 +66,7 @@ const Booklist = () => {
           </li>
         ))}
       </ul>
-      <button onClick={loadMoreBooks} className="bg-blue-500 text-white p-2 rounded-md mt-4">
+      <button onClick={loadMoreBooks} className="bg-blue-500 ml-5 text-white p-2 rounded-xl mt-4">
         Load More
       </button>
     </div>
