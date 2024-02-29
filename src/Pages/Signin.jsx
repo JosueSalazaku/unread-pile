@@ -12,7 +12,8 @@ const Signin = ({darkMode}) => {
             <label className="mr-72 ml-5 pt-16 ">Email</label>
             <input type="" name="Name" placeholder="Email" id="" className="rounded-md w-80 h-10 p-2 t  border border-slate-950 dark:bg-neutral-700 dark:text-white" />
             <label className="mr-64 ml-4 ">Password</label>
-          <input type="password" name="Name" placeholder="password" id="" className="rounded-md w-80 h-10 p-2 border border-slate-950 dark:bg-neutral-700 active:bg-black dark:text-white" />
+          <input type="password" name="Name" placeholder="password" id="" className="rounded-md w-80 h-10 p-2 border mb-5 border-slate-950 dark:bg-neutral-700 active:bg-black dark:text-white" />
+          <button className="w-80 h-10 text-center align-middle rounded-lg border-2 border-neutral-700 ">Google abount</button>
             <button className="mt-3 rounded-md w-80 h-19 p-2 py-1 bg-blue-500">Sign In</button>
         </form>
       </main>
