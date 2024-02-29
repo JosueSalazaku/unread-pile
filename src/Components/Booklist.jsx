@@ -1,4 +1,5 @@
-import { useAppSearch } from "./AppSearchContext";
+import React from 'react';
+import { useAppSearch } from './AppSearchContext';
 
 const Booklist = () => {
   const { books, loading, resultTitle, searchInput } = useAppSearch();
@@ -8,7 +9,7 @@ const Booklist = () => {
   }
 
   if (!books.length && searchInput) {
-    return <p>No books Found.</p>;
+    return <p>No books found.</p>;
   }
 
   if (!books.length && !searchInput) {
@@ -16,33 +17,32 @@ const Booklist = () => {
   }
 
   return (
-    <div className="w-screen flex flex-col justify-center items-center ">
-      <h2 className="py-10 items-center font-bold text-xl">{resultTitle}</h2>
+    <div className="w-screen flex flex-col justify-center items-center">
+      <h2 className="py-10 items-center font-bold text-md">{resultTitle}</h2>
       <ul className="flex flex-col">
         {books.map((book) => (
           <li
             className="flex flex-row justify-evenly border m-4 rounded-md px-10 py-8 dark:text-white"
-            key={book.key}
+            key={book.id}
           >
-            {book.cover_i && (
+            {book.volumeInfo.imageLinks && (
               <img
-                src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-                alt={`Cover of ${book.title}`}
+                src={book.volumeInfo.imageLinks.thumbnail}
+                alt={`Cover of ${book.volumeInfo.title}`}
                 className="py-5"
               />
             )}
             <div className="px-10 py-5">
               <h3 className="font-bold py- text-xl dark:text-white">
-                {" "}
-                {book.title}
+                {book.volumeInfo.title}
               </h3>
               <p>
-                {" "}
-                {book.author_name ? book.author_name.join(".") : "Unknown"}
+                {book.volumeInfo.authors
+                  ? book.volumeInfo.authors.join(', ')
+                  : 'Unknown'}
               </p>
-              <p>Pages: {book.number_of_pages ? book.number_of_pages : "Unknown"}</p>
-              <select className="rounded-md p-0.5 mt-20 bg-gray-500 text-white dark:bg-gray-500 dark:text-white"
-              >
+              <p>Pages: {book.volumeInfo.pageCount || 'Unknown'}</p>
+              <select className="rounded-md p-0.5 mt-20 bg-gray-500 text-white dark:bg-gray-500 dark:text-white">
                 <option value="">To Read</option>
                 <option value="">Read</option>
                 <option value="">Currently Reading</option>

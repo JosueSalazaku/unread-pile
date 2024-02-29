@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-const URL = "https://openlibrary.org/search.json?title=";
+const URL = "https://www.googleapis.com/books/v1/volumes";
+const API_KEY = import.meta.env.REACT_APP_API_KEY;
 
 const AppSearchContext = React.createContext();
 
-// eslint-disable-next-line react/prop-types
 const AppSearchProvider = ({ children }) => {
-  const [searchInput, setSearchInput] = useState(""); // Set a default search term
+  const [searchInput, setSearchInput] = useState("");
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
@@ -17,19 +17,23 @@ const AppSearchProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      // Use searchInput for the API request
-      const response = await axios.get(URL + searchInput);
-      const { docs, numFound } = response.data;
+      const response = await axios.get(URL, {
+        params: {
+          key: API_KEY,
+          q: searchInput,
+        },
+      });
 
-      setBooks(docs);
+      const { items, totalItems } = response.data;
+
+      setBooks(items);
       setResultTitle(
-        `Results for "${searchInput}" (${numFound} books found)`
+        `Results for "${searchInput}" (${totalItems} books found)`
       );
-      setSearchResults(docs);
+      setSearchResults(items);
       setLoading(false);
 
-      // Log the fetched data to the console
-      console.log("Fetched Data:", docs);
+      console.log("Fetched Data:", items);
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
