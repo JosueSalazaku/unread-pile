@@ -42,6 +42,7 @@ const Booklist = () => {
                   : 'Unknown'}
               </p>
               <p>Pages: {book.volumeInfo.pageCount || 'Unknown'}</p>
+              <p>{book.volumeInfo.description || 'No description available.'}</p>
               <select className="rounded-md p-0.5 mt-20 bg-gray-500 text-white dark:bg-gray-500 dark:text-white">
                 <option value="">To Read</option>
                 <option value="">Read</option>
