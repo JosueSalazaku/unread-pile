@@ -17,38 +17,48 @@ const Booklist = () => {
   }
 
   return (
-    <div className="w-screen flex flex-col justify-center items-center">
-      <h2 className="py-10 items-center font-bold text-md">{resultTitle}</h2>
+    <div className="container mx-auto p-4 md:p-8">
+      <h2 className="py-8 items-center font-bold text-2xl md:text-3xl lg:text-4xl">
+        {resultTitle}
+      </h2>
       <ul className="flex flex-col">
         {books.map((book) => (
           <li
-            className="flex flex-row justify-evenly border m-4 rounded-md px-10 py-8 dark:text-white"
             key={book.id}
+            className="flex flex-col md:flex-row justify-evenly border m-4 md:rounded-md py-3 dark:text-white"
           >
             {book.volumeInfo.imageLinks && (
               <img
                 src={book.volumeInfo.imageLinks.thumbnail}
                 alt={`Cover of ${book.volumeInfo.title}`}
-                className="h-96 py-5"
+                className="w-32 h-48 mx-5 md:w-48 md:h-64 lg:w-48 lg:h-72 py-5"
               />
             )}
-            <div className="px-10 py-5">
-              <h3 className="font-bold py- text-md dark:text-white">
+            <div className="px-4 md:px-10 py-5">
+              <h3 className="font-bold text-md md:text-lg lg:text-xl dark:text-white">
                 {book.volumeInfo.title}
               </h3>
-              <p>
+              <p className="text-sm md:text-base lg:text-lg">
                 {book.volumeInfo.authors
                   ? book.volumeInfo.authors.join(', ')
                   : 'Unknown'}
               </p>
-              <p>Pages: {book.volumeInfo.pageCount || 'Unknown'}</p>
+              <p className="text-sm md:text-base lg:text-lg">
+                Pages: {book.volumeInfo.pageCount || 'Unknown'}
+              </p>
               {/* <p>{book.volumeInfo.description || 'No description available.'}</p> */}
-              <select className="rounded-md p-0.5 mt-20 bg-gray-500 text-white dark:bg-gray-500 dark:text-white">
-                <option value="" className='bg-green-500'>To Read</option>
-                <option value="" className='bg-cyan-500'>Read</option>
+              <select className="rounded-md p-0.5 mt-4 md:mt-6 bg-gray-500 text-white dark:bg-gray-500 dark:text-white">
+                <option value="" className="bg-green-500">
+                  To Read
+                </option>
+                <option value="" className="bg-cyan-500">
+                  Read
+                </option>
                 <option value="">Currently Reading</option>
                 <option value="">Did not finish</option>
-                <option value="" className='bg-red-500'>Remove Book</option>
+                <option value="" className="bg-red-500">
+                  Remove Book
+                </option>
               </select>
             </div>
           </li>
