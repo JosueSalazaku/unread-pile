@@ -81,7 +81,7 @@ const Navbar = ({ routes, darkMode, toggleDarkMode }) => {
       {/* Desktop Navigation Items for screens above 1130px */}
       <ul className=" flex- flex-row justify-evenly hidden md:flex space-x-14 mx-10 mr-32 text-md font-semibold lg:flex dark:text-white">
         {routes.map((route) => (
-          <li className="my-5" key={route.to}>
+          <li className="my-5 justify-between" key={route.to}>
             <Link to={route.to}>{route.label}</Link>
           </li>
         ))}
@@ -89,7 +89,7 @@ const Navbar = ({ routes, darkMode, toggleDarkMode }) => {
 
       {menuOpen && (
         <div
-          className="fixed inset-0 transition opacity-75 bg-white z-40 dark:bg-neutral-900"
+          className="fixed inset-0 transition opacity-95 bg-white z-40 dark:bg-neutral-900"
           onClick={closeMenu}
         ></div>
       )}

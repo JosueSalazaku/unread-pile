@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Browse from "./Pages/Browse";
+import Search from "./Pages/Search";
 import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
 import Mybooks from "./Pages/Mybooks";
@@ -18,6 +19,7 @@ const App = () => {
   const routes = [
     { to: "/Browse", label: "Browse" },
     { to: "/Mybooks", label: "My books" },
+    { to: "/Search", label: "" },
     { to: "/Signin", label: "Sign In" },
     { to: "/Signup", label: "Sign up" },
   ];
@@ -33,6 +35,7 @@ const App = () => {
         <Routes>
           <Route path="/Home" element={<Home darkMode={darkMode} />} />
           <Route path="/Browse" element={<Browse darkMode={darkMode} />} />
+          <Route path="/Search" element={<Search darkMode={darkMode} />} />
           <Route path="/Mybooks" element={<Mybooks darkMode={darkMode} />} />
           <Route path="/Signin" element={<Signin darkMode={darkMode} />} />
           <Route path="/Signup" element={<Signup darkMode={darkMode} />} />

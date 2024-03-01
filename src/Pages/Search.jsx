@@ -1,7 +1,7 @@
-import Booklist from "../Components/Booklist";
 import SearchBar from "../Components/SearchBar";
+import Booklist from "../Components/Booklist";
 
-const Home = ({ darkMode }) => {
+const Search = ({ darkMode }) => {
   return (
     <div className={`${darkMode && "dark"}`}>
     <main
@@ -10,11 +10,11 @@ const Home = ({ darkMode }) => {
       } dark:bg-neutral-900 text-black`}
     >
       <SearchBar />
-        <h1 className="text-6xl dark:text-white">Find your Books</h1>
+        <h1 className="text-6xl dark:text-white"></h1>
         <Booklist/>
       </main>
       </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Search

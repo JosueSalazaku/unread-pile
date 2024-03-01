@@ -27,7 +27,7 @@ const Booklist = () => {
         {books.map((book) => (
           <li
             key={book.id}
-            className="flex flex-col md:flex-row justify-evenly border m-4 md:rounded-md py-3 dark:text-white"
+            className="flex flex-col rounded-xl md:flex-row justify-evenly border m-4 md: py-3 dark:text-white"
           >
             {book.volumeInfo.imageLinks && (
               <img
