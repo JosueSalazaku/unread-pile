@@ -1,5 +1,3 @@
-// AppSearchContext.jsx
-
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
@@ -14,9 +12,9 @@ const AppSearchProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [startIndex, setStartIndex] = useState(0); // Added startIndex state
+  const [startIndex, setStartIndex] = useState(0);
 
-  const handleSearch = async () => {
+  const handleSearch = async (navigate) => {
     try {
       setLoading(true);
 
@@ -37,6 +35,11 @@ const AppSearchProvider = ({ children }) => {
       );
       setSearchResults(items);
       setLoading(false);
+
+      // If navigate function is provided, navigate to Search page
+      if (navigate) {
+        navigate(`/Search/${encodeURIComponent(searchInput)}`);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
@@ -47,12 +50,8 @@ const AppSearchProvider = ({ children }) => {
     setStartIndex((prevIndex) => prevIndex + 40);
   };
 
-  const clearSearchResults = () => {
-    setSearchResults([]);
-  };
-
   useEffect(() => {
-    handleSearch();
+    handleSearch(); // No need to pass navigate here
   }, [startIndex]);
 
   return (
@@ -66,7 +65,6 @@ const AppSearchProvider = ({ children }) => {
         searchResults,
         handleSearch,
         loadMoreBooks,
-        clearSearchResults, // Include the clearSearchResults function in the context
       }}
     >
       {children}
