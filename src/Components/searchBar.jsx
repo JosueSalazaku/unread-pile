@@ -1,13 +1,17 @@
 import { useContext } from "react";
 import { AppSearchContext } from "./AppSearchContext";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const { searchInput, setSearchInput, handleSearch } =
     useContext(AppSearchContext);
 
+  const navigate = useNavigate();
+
   const handleKeypress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSearch();
+      navigate(`/Search/${encodeURIComponent(searchInput)}`);
     }
   };
 
@@ -31,8 +35,6 @@ const SearchBar = () => {
       </button>
     </div>
   );
-  
-  
 };
 
 export default SearchBar;

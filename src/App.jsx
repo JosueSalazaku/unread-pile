@@ -19,7 +19,6 @@ const App = () => {
   const routes = [
     { to: "/Browse", label: "Browse" },
     { to: "/Mybooks", label: "My books" },
-    { to: "/Search", label: "" },
     { to: "/Signin", label: "Sign In" },
     { to: "/Signup", label: "Sign up" },
   ];

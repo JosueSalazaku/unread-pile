@@ -25,13 +25,12 @@ const AppSearchProvider = ({ children }) => {
           key: API_KEY,
           q: searchInput,
           maxResults: 40,
-          startIndex, // Added startIndex to the params
+          startIndex,
         },
       });
 
       const { items, totalItems } = response.data;
 
-      // If startIndex is 0, set books directly; otherwise, concatenate
       setBooks((prevBooks) => (startIndex === 0 ? items : [...prevBooks, ...items]));
       setResultTitle(
         `Results for "${searchInput}" (${totalItems} books found)`
@@ -45,13 +44,16 @@ const AppSearchProvider = ({ children }) => {
   };
 
   const loadMoreBooks = () => {
-    setStartIndex((prevIndex) => prevIndex + 40); // Increment startIndex by 40
+    setStartIndex((prevIndex) => prevIndex + 40);
+  };
+
+  const clearSearchResults = () => {
+    setSearchResults([]);
   };
 
   useEffect(() => {
-    // Fetch data when the component mounts
     handleSearch();
-  }, [startIndex]); // Watch for changes in startIndex
+  }, [startIndex]);
 
   return (
     <AppSearchContext.Provider
@@ -63,7 +65,8 @@ const AppSearchProvider = ({ children }) => {
         resultTitle,
         searchResults,
         handleSearch,
-        loadMoreBooks, // Include the loadMoreBooks function in the context
+        loadMoreBooks,
+        clearSearchResults, // Include the clearSearchResults function in the context
       }}
     >
       {children}
