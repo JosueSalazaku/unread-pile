@@ -1,10 +1,12 @@
+import { Route } from "react-router-dom";
+
 const Signup = ({darkMode}) => {
   return (
     <div className={`${darkMode && "dark"}`}> 
       <main className="h-screen w-screen flex flex-col pt-44 items-center dark:bg-neutral-900 dark:text-white ">
         <div className="mr-16 flex flex-col justify-start pb-5">
         <h1 className="font-bold text-4xl pb-2">Sign up</h1>
-        <p>Already have an account? Sign in.</p>
+        <p>Already have an account? <a href="/Signin" className="text-blue-500 font-bold">Sign In</a></p>
         </div>
         <form action="" className="w-96 h-96  flex flex-col justify-between items-center rounded-2xl spa">
             <label className="mr-72 ml-5 pt-">Name</label>
