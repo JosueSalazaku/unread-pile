@@ -1,3 +1,4 @@
+// App.jsx
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
@@ -20,13 +21,14 @@ const App = () => {
   const routes = [
     { to: "/Browse", label: "Browse" },
     { to: "/Mybooks", label: "My books" },
+    // Remove the empty label for "/Search"
     { to: "/Signin", label: "Sign In" },
     { to: "/Signup", label: "Sign up" },
   ];
 
   return (
     <AppSearchProvider>
-      <SearchProvider> 
+      <SearchProvider>
         <Router>
           <Navbar
             routes={routes}

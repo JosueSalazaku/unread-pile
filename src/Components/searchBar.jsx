@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const { searchInput, setSearchInput, handleSearch } = useContext(AppSearchContext);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Import useNavigate hook
 
   const handleKeypress = (e) => {
     if (e.key === "Enter") {
-      handleSearch(navigate); // Pass navigate to handleSearch
+      handleSearch();
+      navigate(`/Search?q=${searchInput}`); // Redirect with search query
     }
   };
 
@@ -25,7 +26,7 @@ const SearchBar = () => {
         onKeyPress={handleKeypress}
       />
       <button
-        onClick={() => handleSearch(navigate)} // Pass navigate to handleSearch
+        onClick={handleSearch}
         className="border-t-2 border-b-2 border-r-2 border-l-0 rounded-r-2xl p-2 border-black dark:bg-neutral-700 border-2 dark:border-gray-500"
       >
         <img src="src/assets/search-svgrepo-com.svg" alt="" className="h-5" />

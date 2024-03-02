@@ -1,20 +1,27 @@
 import React, { useEffect } from 'react';
 import Booklist from '../Components/Booklist';
 import { useSearch } from '../Components/SearchContext';
-const Search = () => {
+import SearchBar from '../Components/SearchBar';
+
+const Search = ({ darkMode }) => {
   const { searchQuery, setSearchQuery } = useSearch();
 
-  // Ensure that the searchQuery is set when the component mounts
   useEffect(() => {
-    setSearchQuery(searchQuery);
+    // Avoid unnecessary state updates when searchQuery is undefined
+    if (searchQuery !== undefined) {
+      setSearchQuery(searchQuery);
+    }
   }, [searchQuery, setSearchQuery]);
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
-      <h2 className="py-8 items-center font-bold text-2xl md:text-3xl lg:text-4xl">
-        {`Search results for "${searchQuery}"`}
-      </h2>
-      <Booklist />
+    <div className={`${darkMode && "dark"}`}>
+      <main className={`h-screen flex flex-col items-center text-black ${ darkMode ? "dark" : ""} dark:bg-neutral-900 text-black`}>
+        <SearchBar />
+        {searchQuery !== undefined && (
+          <h1 className="text-6xl dark:text-white">{`Search results for "${searchQuery}"`}</h1>
+        )}
+        <Booklist />
+      </main>
     </div>
   );
 };

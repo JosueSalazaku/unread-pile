@@ -14,7 +14,7 @@ const AppSearchProvider = ({ children }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
 
-  const handleSearch = async (navigate) => {
+  const handleSearch = async () => {
     try {
       setLoading(true);
 
@@ -29,17 +29,14 @@ const AppSearchProvider = ({ children }) => {
 
       const { items, totalItems } = response.data;
 
-      setBooks((prevBooks) => (startIndex === 0 ? items : [...prevBooks, ...items]));
+      setBooks((prevBooks) =>
+        startIndex === 0 ? items : [...prevBooks, ...items]
+      );
       setResultTitle(
         `Results for "${searchInput}" (${totalItems} books found)`
       );
       setSearchResults(items);
       setLoading(false);
-
-      // If navigate function is provided, navigate to Search page
-      if (navigate) {
-        navigate(`/Search/${encodeURIComponent(searchInput)}`);
-      }
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
@@ -51,7 +48,7 @@ const AppSearchProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    handleSearch(); // No need to pass navigate here
+    handleSearch();
   }, [startIndex]);
 
   return (
