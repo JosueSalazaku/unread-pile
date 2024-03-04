@@ -3,7 +3,7 @@ import Booklist from '../Components/Booklist';
 import { useSearch } from '../Components/SearchContext';
 import SearchBar from '../Components/SearchBar';
 
-const Search = ({ darkMode }) => {
+const Search = ({ darkMode }) => { 
   const { searchQuery, setSearchQuery } = useSearch();
 
   useEffect(() => {
